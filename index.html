@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Website Rahasia 🤫</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top,#ffb6c9,transparent 35%),
+        linear-gradient(135deg,#ff5f8f,#8e44ad);
+    color:white;
+    overflow-x:hidden;
+}
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:auto;
+    padding:35px 0 50px;
+    text-align:center;
+}
+
+/* HEADER */
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.sub{
+    opacity:.9;
+    line-height:1.6;
+}
+
+/* FOTO */
+
+.photo-box{
+    position:relative;
+    margin-top:25px;
+}
+
+.main-photo{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    border-radius:28px;
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    transition:.5s;
+}
+
+.photo-number{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    background:rgba(0,0,0,.5);
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* THUMBNAIL */
+
+.thumbnails{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:12px;
+}
+
+.thumb{
+    width:100%;
+    height:100px;
+    object-fit:cover;
+    border-radius:15px;
+    opacity:.6;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.thumb.active,
+.thumb:hover{
+    opacity:1;
+    transform:translateY(-4px);
+}
+
+/* CARD */
+
+.card{
+    margin-top:25px;
+    padding:25px;
+    background:rgba(255,255,255,.14);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.card h2{
+    margin-bottom:12px;
+}
+
+.card p{
+    line-height:1.7;
+}
+
+/* BUTTON */
+
+button{
+    border:0;
+    padding:13px 22px;
+    margin:8px 4px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.06);
+}
+
+.primary{
+    background:white;
+    color:#e84375;
+}
+
+.secondary{
+    background:#ff4757;
+    color:white;
+}
+
+/* PESAN */
+
+#message{
+    display:none;
+    margin-top:18px;
+    padding:18px;
+    background:rgba(0,0,0,.15);
+    border-radius:18px;
+}
+
+/* PERTANYAAN */
+
+.question{
+    font-size:20px;
+    font-weight:bold;
+}
+
+#result{
+    min-height:30px;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:25px;
+    opacity:.7;
+    font-size:12px;
+}
+
+/* HATI */
+
+.heart{
+    position:fixed;
+    top:-30px;
+    pointer-events:none;
+    animation:fall linear forwards;
+    z-index:10;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    h1{
+        font-size:30px;
+    }
+
+    .main-photo{
+        height:350px;
+    }
+
+    .thumb{
+        height:85px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="badge">
+        🔒 WEBSITE RAHASIA
+    </div>
+
+    <h1>Hai Kamu! 👀</h1>
+
+    <p class="sub">
+        Selamat datang di tempat yang isinya
+        cuma beberapa foto...
+        tapi dramanya bisa sampai episode 100. 😂
+    </p>
+
+
+    <!-- FOTO -->
+
+    <div class="photo-box">
+
+        <img
+            id="mainPhoto"
+            src="foto1.jpg"
+            class="main-photo"
+            alt="Foto">
+
+        <div class="photo-number" id="photoNumber">
+            Foto 1 / 3
+        </div>
+
+    </div>
+
+
+    <!-- THUMBNAIL -->
+
+    <div class="thumbnails">
+
+        <img
+            src="foto1.jpg"
+            class="thumb active"
+            onclick="gantiFoto(0)"
+        >
+
+        <img
+            src="foto2.jpg"
+            class="thumb"
+            onclick="gantiFoto(1)"
+        >
+
+        <img
+            src="foto3.jpg"
+            class="thumb"
+            onclick="gantiFoto(2)"
+        >
+
+    </div>
+
+
+    <!-- PESAN -->
+
+    <div class="card">
+
+        <h2>📢 Pengumuman Penting</h2>
+
+        <p>
+            Setelah dilakukan penelitian selama
+            beberapa hari...
+        </p>
+
+        <br>
+
+        <p>
+            Kesimpulannya adalah:
+            <br><br>
+
+            <b>
+            Kamu ternyata cukup lucu untuk
+            membuat seseorang betah. 😆
+            </b>
+        </p>
+
+        <button
+            class="primary"
+            onclick="bukaPesan()">
+
+            👀 Buka Pesan Rahasia
+
+        </button>
+
+        <div id="message">
+
+            <p>
+                Kalau kamu sudah sampai bagian ini,
+                berarti rasa penasaranmu cukup tinggi. 😂
+            </p>
+
+            <br>
+
+            <p>
+                Tenang...
+                tidak ada jebakan.
+                <br>
+                Untuk sekarang. 😈
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERTANYAAN -->
+
+    <div class="card">
+
+        <h2>🧐 Tes Kejujuran</h2>
+
+        <br>
+
+        <div class="question">
+            Apakah kamu suka website ini?
+        </div>
+
+        <button
+            class="primary"
+            onclick="jawab('yes')">
+
+            IYA 😍
+
+        </button>
+
+        <button
+            class="secondary"
+            id="noButton"
+            onmouseover="kabur()">
+
+            TIDAK 😐
+
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <footer>
+        Dibuat dengan sedikit cinta ❤️
+        dan banyak kebingungan 🤣
+    </footer>
+
+</div>
+
+
+<script>
+
+/* DATA FOTO */
+
+const photos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg"
+];
+
+let current = 0;
+
+
+/* GANTI FOTO */
+
+function gantiFoto(index){
+
+    current = index;
+
+    const main =
+        document.getElementById("mainPhoto");
+
+    const thumbs =
+        document.querySelectorAll(".thumb");
+
+    main.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        main.src = photos[index];
+
+        main.style.opacity = "1";
+
+    },200);
+
+
+    thumbs.forEach((item,i)=>{
+
+        item.classList.toggle(
+            "active",
+            i === index
+        );
+
+    });
+
+
+    document.getElementById(
+        "photoNumber"
+    ).innerText =
+        "Foto " + (index + 1) + " / 3";
+
+}
+
+
+/* SLIDESHOW OTOMATIS */
+
+setInterval(()=>{
+
+    current++;
+
+    if(current >= photos.length){
+        current = 0;
+    }
+
+    gantiFoto(current);
+
+},5000);
+
+
+/* PESAN */
+
+function bukaPesan(){
+
+    const message =
+        document.getElementById("message");
+
+    if(message.style.display === "block"){
+
+        message.style.display = "none";
+
+    }else{
+
+        message.style.display = "block";
+
+        hujanHati();
+
+    }
+
+}
+
+
+/* JAWABAN */
+
+function jawab(){
+
+    document.getElementById("result").innerHTML =
+        "NAH! 😎❤️<br><br>" +
+        "Jawaban kamu benar. " +
+        "Kamu mendapatkan gelar:<br>" +
+        "<b>MANUSIA PALING JUJUR HARI INI 🏆😂</b>";
+
+    hujanHati();
+
+}
+
+
+/* TOMBOL KABUR */
+
+function kabur(){
+
+    const button =
+        document.getElementById("noButton");
+
+    const x =
+        Math.random()*180 - 90;
+
+    const y =
+        Math.random()*120 - 60;
+
+    button.style.transform =
+        `translate(${x}px,${y}px)`;
+
+}
+
+
+/* HUJAN HATI */
+
+function hujanHati(){
+
+    const emojis = [
+        "❤️",
+        "💕",
+        "💖",
+        "😂",
+        "🤣",
+        "✨"
+    ];
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(()=>{
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML =
+                emojis[
+                    Math.floor(
+                        Math.random()*emojis.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random()*100 + "vw";
+
+            heart.style.fontSize =
+                (Math.random()*20+15)+"px";
+
+            heart.style.animationDuration =
+                (Math.random()*3+2)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },5000);
+
+        },i*100);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
